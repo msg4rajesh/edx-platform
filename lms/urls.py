@@ -6,13 +6,13 @@ from config_models.views import ConfigurationModelCurrentAPIView
 from django.conf import settings
 from django.urls import include, re_path
 from django.conf.urls.static import static
+from django.contrib import admin
 from django.contrib.admin import autodiscover as django_autodiscover
 from django.urls import path
 from django.utils.translation import gettext_lazy as _
 from django.views.generic.base import RedirectView
 from edx_api_doc_tools import make_docs_urls
 from edx_django_utils.plugins import get_plugin_url_patterns
-from ratelimitbackend import admin
 
 from lms.djangoapps.branding import views as branding_views
 from lms.djangoapps.debug import views as debug_views
