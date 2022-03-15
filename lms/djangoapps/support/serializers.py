@@ -100,3 +100,20 @@ def serialize_sso_records(user_social_auths):
             'extraData': json.dumps(user_social_auth.extra_data),
         })
     return sso_records
+
+
+def serialize_sso_history_records(user_social_auths):
+    """
+    Serialize user social auth history model object
+    """
+    sso_records = []
+    for user_social_auth in user_social_auths:
+        sso_records.append({
+            'uid': user_social_auth.uid,
+            'provider': user_social_auth.provider,
+            'created': user_social_auth.created,
+            'modified': user_social_auth.modified,
+            'extraData': json.dumps(user_social_auth.extra_data),
+            'history_date': user_social_auth.history_date
+        })
+    return sso_records
