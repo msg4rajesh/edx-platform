@@ -384,7 +384,6 @@ def dismiss_welcome_message(request):  # pylint: disable=missing-function-docstr
 @permission_classes((IsAuthenticated,))
 def save_course_goal(request):  # pylint: disable=missing-function-docstring
     course_id = request.data.get('course_id')
-    goal_key = request.data.get('goal_key')
     days_per_week = request.data.get('days_per_week')
     subscribed_to_reminders = request.data.get('subscribed_to_reminders')
 

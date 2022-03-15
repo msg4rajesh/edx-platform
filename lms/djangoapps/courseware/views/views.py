@@ -1628,9 +1628,6 @@ def render_xblock(request, usage_key_string, check_if_enrolled=True):
     Returns an HttpResponse with HTML content for the xBlock with the given usage_key.
     The returned HTML is a chromeless rendering of the xBlock (excluding content of the containing courseware).
     """
-    from lms.urls import RESET_COURSE_DEADLINES_NAME
-    from openedx.features.course_experience.urls import COURSE_HOME_VIEW_NAME
-
     usage_key = UsageKey.from_string(usage_key_string)
 
     usage_key = usage_key.replace(course_key=modulestore().fill_in_run(usage_key.course_key))
@@ -1737,12 +1734,11 @@ def render_xblock(request, usage_key_string, check_if_enrolled=True):
             'missed_deadlines': missed_deadlines,
             'missed_gated_content': missed_gated_content,
             'has_ended': course.has_ended(),
-            'web_app_course_url': reverse(COURSE_HOME_VIEW_NAME, args=[course.id]),
+            'web_app_course_url': get_learning_mfe_home_url(course_key=course.id, url_fragment='home'),
             'on_courseware_page': True,
             'verified_upgrade_link': verified_upgrade_deadline_link(request.user, course=course),
             'is_learning_mfe': is_learning_mfe,
             'is_mobile_app': is_mobile_app,
-            'reset_deadlines_url': reverse(RESET_COURSE_DEADLINES_NAME),
             'render_course_wide_assets': True,
 
             **optimization_flags,

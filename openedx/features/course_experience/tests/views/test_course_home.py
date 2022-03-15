@@ -898,16 +898,3 @@ class CourseHomeFragmentViewTests(ModuleStoreTestCase):
     def test_display_upgrade_message_if_audit_and_deadline_not_passed(self):
         CourseEnrollment.enroll(self.user, self.course.id, CourseMode.AUDIT)  # lint-amnesty, pylint: disable=no-member
         self.assert_upgrade_message_displayed()
-
-    @mock.patch(
-        'openedx.features.course_experience.views.course_home.format_strikeout_price',
-        mock.Mock(return_value=(HTML("<span>DISCOUNT_PRICE</span>"), True))
-    )
-    def test_upgrade_message_discount(self):
-        # pylint: disable=no-member
-        CourseEnrollment.enroll(self.user, self.course.id, CourseMode.AUDIT)
-
-        with override_waffle_flag(SHOW_UPGRADE_MSG_ON_COURSE_HOME, True):
-            response = self.client.get(self.url)
-
-        self.assertContains(response, "<span>DISCOUNT_PRICE</span>")

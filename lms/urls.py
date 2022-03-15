@@ -803,12 +803,6 @@ if configuration_helpers.get_value('ENABLE_BULK_ENROLLMENT_VIEW', settings.FEATU
         path('api/bulk_enroll/v1/', include('lms.djangoapps.bulk_enroll.urls')),
     ]
 
-# Course goals
-urlpatterns += [
-    path('api/course_goals/', include(('lms.djangoapps.course_goals.urls', 'lms.djangoapps.course_goals'),
-                                      namespace='course_goals_api')),
-]
-
 # Embargo
 if settings.FEATURES.get('EMBARGO'):
     urlpatterns += [
