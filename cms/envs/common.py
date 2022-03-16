@@ -1686,10 +1686,10 @@ INSTALLED_APPS = [
     # Learning Sequence Navigation
     'openedx.core.djangoapps.content.learning_sequences.apps.LearningSequencesConfig',
 
+    'ratelimitbackend',
+
     # Database-backed Organizations App (http://github.com/edx/edx-organizations)
     'organizations',
-
-    'ratelimitbackend',
 
     # User and group management via edx-django-utils
     'edx_django_utils.user',
