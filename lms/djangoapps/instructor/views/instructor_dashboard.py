@@ -685,6 +685,7 @@ def _section_send_email(course, access):
     email_editor = fragment.content
     section_data = {
         'section_key': 'send_email',
+        'communications_mfe_url': f'{settings.COMMUNICATIONS_MICROFRONTEND_URL}/courses/{str(course_key)}/bulk_email',
         'section_display_name': _('Email'),
         'access': access,
         'send_email': reverse('send_email', kwargs={'course_id': str(course_key)}),
