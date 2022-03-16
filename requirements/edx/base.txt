@@ -195,6 +195,7 @@ django==3.2.12
     #   django-mysql
     #   django-oauth-toolkit
     #   django-pyfs
+    #   django-ratelimit-backend
     #   django-sekizai
     #   django-ses
     #   django-splash
