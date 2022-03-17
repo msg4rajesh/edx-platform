@@ -195,7 +195,7 @@ class UserAPITestCase(APITestCase):
 
 @ddt.ddt
 @skip_unless_lms
-class TestOwnUsernameAPI(CacheIsolationTestCase, FilteredQueryCountMixin, UserAPITestCase):
+class TestOwnUsernameAPI(CacheIsolationTestCase, UserAPITestCase):
     """
     Unit tests for the Accounts API.
     """
@@ -253,7 +253,7 @@ class TestOwnUsernameAPI(CacheIsolationTestCase, FilteredQueryCountMixin, UserAP
     {'full': 50, 'small': 10},
     clear=True
 )
-class TestAccountsAPI(CacheIsolationTestCase, UserAPITestCase):
+class TestAccountsAPI(FilteredQueryCountMixin, CacheIsolationTestCase, UserAPITestCase):
     """
     Unit tests for the Accounts API.
     """
