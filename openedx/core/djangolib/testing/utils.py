@@ -210,6 +210,8 @@ class FilteredQueryCountMixin:
         the addition of the following argument:
             table_ignorelist (List): A list of table names to filter out of the
                 set of queries that get counted.
+
+        Important: TestCase must include FilteredQueryCountMixin for this to work.
         """
         using = kwargs.pop("using", DEFAULT_DB_ALIAS)
         conn = connections[using]
