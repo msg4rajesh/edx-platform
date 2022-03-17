@@ -2063,17 +2063,17 @@ MIDDLEWARE = [
     'edx_django_utils.cache.middleware.RequestCacheMiddleware',
 
     # Various monitoring middleware
-    'edx_django_utils.monitoring.CachedCustomMonitoringMiddleware',
     'edx_django_utils.monitoring.CodeOwnerMonitoringMiddleware',
     'edx_django_utils.monitoring.CookieMonitoringMiddleware',
     'edx_django_utils.monitoring.DeploymentMonitoringMiddleware',
-    'edx_django_utils.monitoring.MonitoringMemoryMiddleware',
 
     # Before anything that looks at cookies, especially the session middleware
     'openedx.core.djangoapps.cookie_metadata.middleware.CookieNameChange',
 
     # Monitoring and logging middleware
+    # - Note: the order and placement of these middleware are very sensitive (i.e. broken tests when moved)
     'openedx.core.lib.request_utils.ExpectedErrorMiddleware',
+    'edx_django_utils.monitoring.CachedCustomMonitoringMiddleware',
 
     'lms.djangoapps.mobile_api.middleware.AppVersionUpgrade',
     'openedx.core.djangoapps.header_control.middleware.HeaderControlMiddleware',
