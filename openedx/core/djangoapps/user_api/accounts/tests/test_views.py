@@ -27,7 +27,7 @@ from openedx.core.djangoapps.user_api.accounts import ACCOUNT_VISIBILITY_PREF_KE
 from openedx.core.djangoapps.user_api.models import UserPreference
 from openedx.core.djangoapps.user_api.preferences.api import set_user_preference
 from openedx.core.djangoapps.waffle_utils.testutils import WAFFLE_TABLES
-from openedx.core.djangolib.testing.utils import CacheIsolationTestCase, skip_unless_lms
+from openedx.core.djangolib.testing.utils import CacheIsolationTestCase, FilteredQueryCountMixin, skip_unless_lms
 from openedx.features.name_affirmation_api.utils import get_name_affirmation_service
 
 from .. import ALL_USERS_VISIBILITY, CUSTOM_VISIBILITY, PRIVATE_VISIBILITY
@@ -195,7 +195,7 @@ class UserAPITestCase(APITestCase):
 
 @ddt.ddt
 @skip_unless_lms
-class TestOwnUsernameAPI(CacheIsolationTestCase, UserAPITestCase):
+class TestOwnUsernameAPI(CacheIsolationTestCase, FilteredQueryCountMixin, UserAPITestCase):
     """
     Unit tests for the Accounts API.
     """
